@@ -1,0 +1,9 @@
+<div class="post clearfix text-center">
+    <h3>Tecnologias utilizadas nesse projeto</h3>
+    <ng-container *ngFor="let t of tecnologias">
+        <a class="mr-2" href="{{ t.url }}" target="_blank">
+            <img height="60px" title="{{ t.title }}" src="/assets/img/{{ t.img }}.png" alt="{{ t.title }}" />
+        </a>
+
+    </ng-container>
+</div>

@@ -1,0 +1,24 @@
+FROM node:16
+
+WORKDIR /var/www
+
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get -y install git
+
+RUN npm uninstall -g angular-cli @angular/cli
+RUN npm cache verify
+RUN npm i -g @angular/cli@13.1.4
+
+# RUN rm -rf ~/tmp
+# RUN npm cache clear --force
+
+# ng new frontend --no-strict --verbose
+# WORKDIR /usr/src/app/frontend
+
+# EXPOSE 4200
+# CMD ["ng build"]
+
+# RUN ng new capes-app
+# npm cache clean --force
+
+# ENTRYPOINT ["tail", "-f", "/dev/null"]

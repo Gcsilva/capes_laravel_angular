@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+
+  capes-node:
+    container_name: "capes-node"
+    # restart: unless-stopped
+    tty: true
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile.node
+    command: "ng build"
+    # ports:
+    #   - "8000:4200"
+    volumes: 
+      - ./frontend/:/var/www
+    networks:
+      - capes-net
+      
+  capes-php:
+    container_name: "capes-php"
+    # restart: unless-stopped
+    # tty: true
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile.php
+    command: "./init.sh"
+    volumes:
+      - ./backend:/var/www
+    networks:
+      - capes-net
+    depends_on:
+      - capes-db
+
+  capes-db:
+    container_name: "capes-db"
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: capes123
+      MYSQL_DATABASE: capes_laravel_angular
+      MYSQL_USER: capes_laravel
+      MYSQL_PASSWORD: capes123
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - "3309:3306"
+    networks:
+      - capes-net
+
+  capes-nginx:
+    container_name: capes-nginx
+    image: nginx
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./backend/:/var/www
+      - ./frontend/dist/frontend/:/var/frontend/
+    ports:
+      - "90:80"
+      - "8000:88"
+    networks:
+      - capes-net
+    depends_on:
+     - capes-php
+     - capes-node
+
+networks:
+  capes-net:
+    driver: bridge
+
+

@@ -1,0 +1,100 @@
+<app-content [pageInfo]="pageInfo">
+
+    <div class="row">
+
+        <div class="col-lg-5">
+            <div class="card card-primary card-outline" [ngClass]="isCreate == true ? 'card-success' : 'card-primary'">
+                <div class="card-header">
+                    <h5 *ngIf="isCreate" class="m-0">Cadastrar novo curso</h5>
+                    <h5 *ngIf="!isCreate" class="m-0">Editar curso</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" [(ngModel)]="curso.nome"
+                            class="form-control form-control-border border-width-2" id="nome"
+                            placeholder="Nome do Curso">
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" [(ngModel)]="curso.descricao"
+                            class="form-control form-control-border border-width-2" id="descricao"
+                            placeholder="Descrição do Curso">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Início:</label>
+                        <div class="input-group date" id="curso-dt_inicio" data-target-input="nearest">
+                            <input type="date" [(ngModel)] ="curso.dt_inicio" class="form-control form-control-border border-width-2 datetimepicker-input" data-target="#curso-dt_inicio">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Data Fim:</label>
+                        <div class="input-group date" id="curso-dt_fim" data-target-input="nearest">
+                            <input type="date" [(ngModel)]="curso.dt_fim" class="form-control form-control-border border-width-2 datetimepicker-input" data-target="#curso-dt_fim">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-right">
+                    <button class="btn" [ngClass]="isCreate == true ? 'btn-success' : 'btn-primary mr-1'" role="button" (click)="saveCurso()">{{ isCreate ? 'Cadastrar' : 'Alterar'}}</button>
+                    <button class="btn btn-danger" *ngIf="!isCreate" role="button" (click)="cancelaEditar()">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-md-5 -->
+
+        <div class="col-lg-7">
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Cursos avaliados</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">Nome</th>
+                                <th>Descrição</th>
+                                <th>Período</th>
+                                <th style="width: 40px">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let c of cursos; index as i;">
+                                <tr>
+                                    <td>{{ c.nome }}</td>
+                                    <td>{{ c.descricao }}</td>
+                                    <td>{{ c.dt_inicio | date:'dd/MM/yyyy' }} - {{ c.dt_fim |
+                                        date:'dd/MM/yyyy' }}</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="btn-group">
+                                                <button type="button" role="button" class="btn btn-primary"
+                                                    (click)="selectCurso(c)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" role="button" class="btn btn-danger"
+                                                    (click)="deleteCurso(c.id)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="overlay" *ngIf="grid_loading">
+                    <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-7 -->
+
+    </div>
+    <!-- /.row -->
+</app-content>
