@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-COPY ../backend/composer.lock ../backend/composer.json /var/www/
+COPY ../backend/ /var/www/
 
 WORKDIR /var/www
 
@@ -48,8 +48,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # # change current user to www
 # USER www
 
-COPY ../backend/init.sh /var/www/
 RUN php /usr/local/bin/composer update --no-scripts --no-autoloader
 
 EXPOSE 9000
+
 CMD ["php-fpm"]
