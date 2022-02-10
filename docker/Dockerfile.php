@@ -43,8 +43,6 @@ RUN docker-php-ext-install pdo_mysql
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN php /usr/local/bin/composer update --no-scripts --no-autoloader
-
 EXPOSE 9000
 
 ENTRYPOINT ["/var/init.sh"]
