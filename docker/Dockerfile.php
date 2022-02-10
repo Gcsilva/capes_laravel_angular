@@ -1,5 +1,8 @@
 FROM php:8.1-fpm
 
+LABEL name="Serviço PHP para prover o Laravel" \
+        version="1.0"
+
 COPY ../backend/ /var/www/
 
 WORKDIR /var/www
@@ -17,10 +20,15 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    dos2unix \
+    && apt-get clean
 
 # Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN dos2unix ./init.sh && apt-get --purge remove -y dos2unix
+
 
 # Install extensions
 RUN docker-php-ext-install pdo_mysql

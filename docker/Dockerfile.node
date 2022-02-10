@@ -1,5 +1,8 @@
 FROM node:16
 
+LABEL name="Serviço Node para compilar o Angular" \
+        version="1.0"
+
 WORKDIR /var/www
 
 RUN apt-get -y update && apt-get -y upgrade
