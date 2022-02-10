@@ -24,7 +24,7 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile.php
-    command: "./init.sh"
+    command: "/var/www/init.sh"
     volumes:
       - ./backend:/var/www
     networks:

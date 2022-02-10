@@ -48,5 +48,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # # change current user to www
 # USER www
 
+COPY ../backend/init.sh /var/www/
+
 EXPOSE 9000
 CMD ["php-fpm"]
