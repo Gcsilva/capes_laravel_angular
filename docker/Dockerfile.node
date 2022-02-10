@@ -11,6 +11,7 @@ RUN apt-get -y install git
 RUN npm uninstall -g angular-cli @angular/cli
 RUN npm cache verify
 RUN npm i -g @angular/cli@13.1.4
+RUN npm install @angular-devkit/build-angular:browser
 
 # RUN rm -rf ~/tmp
 # RUN npm cache clear --force
