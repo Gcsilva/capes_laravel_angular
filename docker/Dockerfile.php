@@ -53,5 +53,4 @@ RUN php /usr/local/bin/composer update --no-scripts --no-autoloader
 EXPOSE 9000
 
 ENTRYPOINT ["/var/www/init.sh"]
-
 CMD ["php-fpm"]
