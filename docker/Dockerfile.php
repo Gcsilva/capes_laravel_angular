@@ -49,6 +49,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # USER www
 
 COPY ../backend/init.sh /var/www/
+RUN php /usr/local/bin/composer update --no-scripts --no-autoloader
 
 EXPOSE 9000
 CMD ["php-fpm"]
