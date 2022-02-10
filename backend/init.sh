@@ -1,7 +1,9 @@
 #!/bin/bash
 
 cd /var/www
+
 php -v
+
 # /var/www/vendor/laravel/sail/bin/sail up -d
 # chmod 777 composer.lock /var/www/vendor/laravel/sail/bin/sail
 # rm -f composer.lock /var/www/vendor/laravel/sail/bin/sail
