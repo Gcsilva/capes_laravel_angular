@@ -59,9 +59,11 @@ Certifique-se que o [Docker](https://www.docker.com/) esteja instalado e em exec
 
 Após a criação dos containers todos os comandos abaixo serão executados automaticamente:
 
+- npm install
 - ng build
-- composer update
-- migrate
-- seed
+
+Com os containers criados execute o comando a seguir para executar o **Migrate** (que criará a tabela na base de dados) e o **Seeder** (que populará a tabela com dados dummy).
+
+    docker exec capes-php ./init.sh
 
 *Agradeço por apreciar este trabalho.*
