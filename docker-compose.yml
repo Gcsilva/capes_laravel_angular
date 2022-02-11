@@ -4,16 +4,10 @@ services:
 
   capes-node:
     container_name: "capes-node"
-    # restart: unless-stopped
     tty: true
     build:
       context: ./
       dockerfile: docker/Dockerfile.node
-    # command: 
-    #   - "npm install"
-    #   - "ng build"
-    # ports:
-    #   - "8000:4200"
     volumes: 
       - ./frontend/:/var/www
     networks:
@@ -21,8 +15,6 @@ services:
       
   capes-php:
     container_name: "capes-php"
-    # restart: unless-stopped
-    # tty: true
     build:
       context: ./
       dockerfile: docker/Dockerfile.php

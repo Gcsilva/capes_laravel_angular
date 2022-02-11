@@ -64,6 +64,6 @@ Após a criação dos containers todos os comandos abaixo serão executados auto
 
 Com os containers criados execute o comando a seguir para executar o **Migrate** (que criará a tabela na base de dados) e o **Seeder** (que populará a tabela com dados dummy).
 
-    docker exec capes-php /var/init.sh
+    docker exec capes-php //var/init.sh
 
 *Agradeço por apreciar este trabalho.*

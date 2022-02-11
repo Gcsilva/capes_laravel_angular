@@ -13,19 +13,9 @@ RUN apt-get -y install git
 RUN npm uninstall -g angular-cli @angular/cli
 RUN npm cache verify
 RUN npm i -g @angular/cli@13.1.4
-RUN npm install --save-dev @angular-devkit/build-angular
 RUN npm install
-RUN ng build
-# RUN rm -rf ~/tmp
-# RUN npm cache clear --force
+RUN npm install --arch=x64 --platform=linux sharp
 
-# ng new frontend --no-strict --verbose
-# WORKDIR /usr/src/app/frontend
-
-# EXPOSE 4200
-# CMD ["ng build"]
-
-# RUN ng new capes-app
-# npm cache clean --force
+EXPOSE 9090
 
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
