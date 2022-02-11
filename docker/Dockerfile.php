@@ -45,5 +45,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 EXPOSE 9000
 
-# ENTRYPOINT ["/var/init.sh"]
+ENTRYPOINT ["/var/init.sh"]
 CMD ["php-fpm"]

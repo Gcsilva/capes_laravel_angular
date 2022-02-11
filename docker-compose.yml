@@ -42,12 +42,11 @@ services:
       MYSQL_DATABASE: capes_laravel_angular
       MYSQL_USER: capes_laravel
       MYSQL_PASSWORD: capes123
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
     ports:
       - "3309:3306"
     networks:
-      - capes-net
+      capes-net:
+        ipv4_address: 172.100.0.2
 
   capes-nginx:
     container_name: capes-nginx
@@ -67,8 +66,12 @@ services:
      - capes-php
      - capes-node
 
-networks:
+networks: 
   capes-net:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.100.0.0/16
+          gateway: 172.100.0.1
 
 
