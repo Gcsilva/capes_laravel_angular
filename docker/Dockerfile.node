@@ -13,7 +13,7 @@ RUN npm cache verify
 RUN npm i -g @angular/cli@13.1.4
 RUN npm install --save-dev @angular-devkit/build-angular
 RUN npm install
-RUN npm build
+RUN ng build
 # RUN rm -rf ~/tmp
 # RUN npm cache clear --force
 
