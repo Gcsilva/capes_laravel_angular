@@ -26,6 +26,9 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile.php
+    command:
+      - "php artisan migrate --path=/database/migrations/2022_02_04_033813_create_cursos_table.php"
+      - "php artisan db:seed CursoSeeder"
     volumes:
       - ./backend:/var/www
     networks:
