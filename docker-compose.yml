@@ -9,9 +9,9 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile.node
-    command: 
-      - "npm install"
-      - "ng build"
+    # command: 
+    #   - "npm install"
+    #   - "ng build"
     # ports:
     #   - "8000:4200"
     volumes: 
