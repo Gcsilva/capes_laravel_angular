@@ -10,7 +10,7 @@ cadastramento, visualização, alteração e exclusão (CRUD) de Cursos Acadêmi
    
 ## Serviço providos
  
-- Frontend -> Gerenciamento dos Cursos: http://localhost:8000/cursos
+- Frontend -> Gerenciamento dos Cursos: http://localhost:8000
 - Backend -> API fornecendo recursos para persistir os dados: http://localhost:90/api/curso
 - Database
   - Hostname: localhost
@@ -53,17 +53,18 @@ Clone o repositório dentro de uma pasta (Ex. capes)
 
     git clone https://github.com/Gcsilva/capes_laravel_angular.git
 
-Certifique-se que o [Docker](https://www.docker.com/) esteja instalado e em execução. Em seguida execute o comando a seguir no directório raiz do projeto:
+Certifique-se que o [Docker](https://www.docker.com/) esteja instalado e em execução. Em seguida execute o comando no directório raiz do projeto:
 
     docker-compose -f "docker-compose.yml" up -d --build
 
 Após a criação dos containers todos os comandos abaixo serão executados automaticamente:
 
-- npm install
-- ng build
+- composer install
+- php artisan migrate --path=/database/migrations/2022_02_04_033813_create_cursos_table.php
+- php artisan db:seed CursoSeeder
 
-Com os containers criados execute o comando a seguir para executar o **Migrate** (que criará a tabela na base de dados) e o **Seeder** (que populará a tabela com dados dummy).
+**Caso seja a primeira vez que executa o projeto**, o container **capes-node** irá compilar o FRONTEND e esse processo pode levar alguns minutos. Verifique no seu projeto se a pasta **/frontend/dist/frontend** já encontra-se disponível e em seguida execute o comando para reiniciar o container **capes-nginx**.
 
-    docker exec capes-php //var/init.sh
+    docker restart capes-nginx
 
 *Agradeço por apreciar este trabalho.*
