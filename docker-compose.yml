@@ -18,6 +18,7 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile.php
+    command: //var/www/init.sh
     volumes:
       - ./backend:/var/www
     networks:
@@ -42,7 +43,7 @@ services:
   capes-nginx:
     container_name: capes-nginx
     image: nginx
-    restart: unless-stopped
+    restart: always
     tty: true
     volumes:
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/

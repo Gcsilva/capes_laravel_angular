@@ -18,4 +18,4 @@ RUN npm install --arch=x64 --platform=linux sharp
 
 EXPOSE 9090
 
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["ng", "build"]

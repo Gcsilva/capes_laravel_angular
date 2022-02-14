@@ -13,4 +13,4 @@ php /usr/local/bin/composer install --no-scripts --no-autoloader
 php artisan migrate --path=/database/migrations/2022_02_04_033813_create_cursos_table.php --force
 php artisan db:seed CursoSeeder --force
 
-# php-fpm
+php-fpm
