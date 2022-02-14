@@ -64,7 +64,7 @@ Após a criação dos containers todos os comandos abaixo serão executados auto
 - php artisan db:seed CursoSeeder
 - ng build
 
-**Caso seja a primeira vez que executa o projeto**, o container **capes-node** irá compilar o FRONTEND e esse processo pode levar alguns minutos. Verifique no seu projeto se a pasta **/frontend/dist/frontend** já encontra-se disponível e em seguida execute o comando para reiniciar o container **capes-nginx**.
+**Caso seja a primeira vez que executa o projeto**, o container **capes-node** irá compilar o FRONTEND e esse processo pode levar alguns minutos. Verifique na pasta **/frontend/dist/frontend** se o projeto compilado já encontra-se disponível e em seguida execute o comando para reiniciar o container **capes-nginx**.
 
     docker restart capes-nginx
 
